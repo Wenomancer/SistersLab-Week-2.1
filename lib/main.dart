@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../component/MyCustomTextField.dart';
-import '../logic/MainLogic.dart';
+import 'component/MyCustomTextField.dart';
+import 'logic/MainLogic.dart';
 
 void main() {
   runApp(MyView());
