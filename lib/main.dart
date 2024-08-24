@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sisterslabsecond/component/CustomAppBar.dart';
-import 'package:sisterslabsecond/component/CustomBottomNavBar.dart';
-import 'package:sisterslabsecond/view/bottom_nav_pages/BusinessView.dart';
-import 'package:sisterslabsecond/view/bottom_nav_pages/HomeView.dart';
-import 'package:sisterslabsecond/view/bottom_nav_pages/LibraryView.dart';
-import 'package:sisterslabsecond/view/bottom_nav_pages/SchoolView.dart';
 
 void main() {
   runApp(MyView());
@@ -21,13 +16,8 @@ class MyView extends StatefulWidget {
 
 class _MyViewState extends State<MyView> {
   int pageIndex = 0;
-
-  List bottomNavBarViews = [
-    HomeView(),
-    BusinessView(),
-    SchoolView(),
-    LibraryView(),
-  ];
+  String myText = "xxxxxxx";
+  TextEditingController myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +29,29 @@ class _MyViewState extends State<MyView> {
           removeButtonOnPressed: () {},
           menuButtonOnPressed: () {},
         ),
-        body: bottomNavBarViews[pageIndex],
-        bottomNavigationBar: CustomBottomNavBar(
-          bottomNavBarCallback: (index) {
-            setState(() {
-              pageIndex = index;
-            });
-          },
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: myController,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                myText,
+                style: TextStyle(fontSize: 30),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    myText = myController.text;
+                  });
+                },
+                child: Text("Click Me"),
+              ),
+            ],
+          ),
         ),
       ),
     );
