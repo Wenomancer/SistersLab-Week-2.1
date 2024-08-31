@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sisterslabsecond/component/CustomAppBar.dart';
 
 void main() {
   runApp(MyView());
@@ -15,45 +14,30 @@ class MyView extends StatefulWidget {
 }
 
 class _MyViewState extends State<MyView> {
-  int pageIndex = 0;
-  String myText = "xxxxxxx";
-  TextEditingController myController = TextEditingController();
+  String data = "Loading...";
 
   @override
   Widget build(BuildContext context) {
+
+    myFunction().then((value) {
+      setState(() {
+        data = value;
+      });
+    });
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: CustomAppBar(
-          addButtonOnPressed: () {},
-          removeButtonOnPressed: () {},
-          menuButtonOnPressed: () {},
-        ),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: myController,
-              ),
-              const SizedBox(height: 20),
-              Text(
-                myText,
-                style: TextStyle(fontSize: 30),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    myText = myController.text;
-                  });
-                },
-                child: Text("Click Me"),
-              ),
-            ],
-          ),
-        ),
+        body: Center(
+        child: Text(data),
+)
       ),
     );
   }
+}
+
+
+Future<String> myFunction() async {
+  await Future.delayed(Duration(seconds: 5));
+  return "Hello";
 }
