@@ -23,7 +23,7 @@ class _MyViewState extends State<MyView> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: const Center(child: Text('My View')),
+          title: const Center(child: Text('My View Mine')),
         ),
         body: HomeView(),
       ),
