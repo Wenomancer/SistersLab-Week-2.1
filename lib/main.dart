@@ -14,14 +14,16 @@ class MyView extends StatefulWidget {
 }
 
 class _MyViewState extends State<MyView> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: Text('Hello, World!'),
+        body: Column(
+          children: [
+            Text("Hello World!"),
+            Text("ilayda burdaydı"),
+          ],
         ),
       ),
     );
