@@ -23,6 +23,27 @@ class _MyViewState extends State<MyView> {
           children: [
             Text("Hello World!"),
             Text("ilayda burdaydı"),
+            Container(
+              height: 200,
+              color: Colors.red,
+              child: Center(
+                child: Text('Container 1'),
+              ),
+            ),
+            Container(
+              height: 200,
+              color: Colors.green,
+              child: Center(
+                child: Text('Container 2'),
+              ),
+            ),
+            Container(
+              height: 200,
+              color: Colors.blue,
+              child: Center(
+                child: Text('Container 3'),
+              ),
+            ),
           ],
         ),
       ),
