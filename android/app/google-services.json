@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "941955074694",
+    "project_id": "sisterslab-21b0c",
+    "storage_bucket": "sisterslab-21b0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941955074694:android:4b8a5cc6df57ea3ea51f07",
+        "android_client_info": {
+          "package_name": "com.sisterslab.sisterslabsecond"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf6M1GTfv0UX1YIw_q7Ylz7ykp1XZKDLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
