@@ -41,6 +41,10 @@ dependencies:
   firebase_auth: ^5.2.1
   provider: ^6.1.2
   shared_preferences: ^2.3.2
+  cloud_firestore: ^5.4.2
+  json_serializable: ^6.8.0
+  json_annotation: ^4.9.0
+  build_runner: ^2.4.12
 
 dev_dependencies:
   flutter_test:

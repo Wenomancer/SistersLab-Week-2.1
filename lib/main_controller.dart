@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sisterslabsecond/auth/presentation/login/login_page.dart';
+import 'package:sisterslabsecond/home/presentation/home_page.dart';
 
-import 'main/presentation/main_page.dart';
 
 class MainController  extends ChangeNotifier {
-  Widget firstPage = const MainPage();
+  Widget firstPage = const HomePage();
 
   void checkUserSignedIn() {
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -15,7 +15,7 @@ class MainController  extends ChangeNotifier {
         notifyListeners();
       } else{
         if (user.emailVerified) {
-          firstPage = const MainPage();
+          firstPage = const HomePage();
         } else {
           firstPage = const LoginPage();
         }
