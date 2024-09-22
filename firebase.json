@@ -1,1 +1,2 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"sisterslab-21b0c","appId":"1:941955074694:android:4b8a5cc6df57ea3ea51f07","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"sisterslab-21b0c","configurations":{"android":"1:941955074694:android:4b8a5cc6df57ea3ea51f07"}}}}}}
+{"flutter":{"platforms":{"android":{"default":{"projectId":"sisterslab-21b0c","appId":"1:941955074694:android:4b8a5cc6df57ea3ea51f07","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"sisterslab-21b0c",
+  "configurations":{"android":"1:941955074694:android:4b8a5cc6df57ea3ea51f07"}}}}}}

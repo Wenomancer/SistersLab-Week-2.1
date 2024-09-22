@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'auth/presentation/create_account_page.dart';
-import 'auth/presentation/login_page.dart';
+import 'auth/presentation/create_account/create_account_page.dart';
+import 'auth/presentation/login/login_page.dart';
 import 'firebase_options.dart';
 import 'main_controller.dart';
 
@@ -13,13 +12,10 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Ideal time to initialize
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-
   runApp(
     ChangeNotifierProvider(
       create: (context) {
-        return MainController()..init();
+        return MainController()..checkUserSignedIn();
       },
       child: MyApp(),
     ),
@@ -32,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: {
         '/login': (context) => const LoginPage(),
         '/create-account': (context) => const CreateAccountPage(),

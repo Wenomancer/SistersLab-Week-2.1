@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sisterslabsecond/auth/presentation/create_account/create_account_page_controller.dart';
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
@@ -8,6 +10,17 @@ class CreateAccountPage extends StatefulWidget {
 }
 
 class CreateAccountPageState extends State<CreateAccountPage> {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => CreateAccountPageController(),
+      child: _Page(),
+    );
+  }
+}
+
+class _Page extends StatelessWidget {
+
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -15,6 +28,7 @@ class CreateAccountPageState extends State<CreateAccountPage> {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Provider.of<CreateAccountPageController>(context);
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -70,9 +84,16 @@ class CreateAccountPageState extends State<CreateAccountPage> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Process data
+                    controller.signUpWithEmailAndPassword(
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                  }
+                  if(controller.emailVerificationMessage.isNotEmpty){
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Processing Data')),
+                      SnackBar(
+                        content: Text(controller.emailVerificationMessage),
+                      ),
                     );
                   }
                 },
@@ -83,6 +104,6 @@ class CreateAccountPageState extends State<CreateAccountPage> {
         ),
       ),
     );
+    ;
   }
 }
-

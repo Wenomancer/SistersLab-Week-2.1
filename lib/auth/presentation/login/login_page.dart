@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'login_page_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,12 +11,37 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => LoginPageController(),
+      child: _Page(),
+    );
+  }
+}
+
+class _Page extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var controller = Provider.of<LoginPageController>(context);
+
+    void showSnackBar(String message) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(message),
+      ));
+    }
+
+    controller.addListener(() {
+      if (controller.emailVerificationMessage.isNotEmpty) {
+        showSnackBar(controller.emailVerificationMessage);
+      }
+    });
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -85,8 +113,9 @@ class LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Process data
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Processing Data')),
+                    controller.login(
+                      _emailController.text,
+                      _passwordController.text,
                     );
                   }
                 },
