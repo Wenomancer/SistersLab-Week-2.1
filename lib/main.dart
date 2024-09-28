@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sisterslabsecond/presentation/bloc/counter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:sisterslabsecond/presentation/home_screen.dart';
 
 void main() {
@@ -19,7 +18,13 @@ class MyView extends StatefulWidget {
 class _MyViewState extends State<MyView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    );
+
+    /*
+      MaterialApp(
       debugShowCheckedModeBanner: false,
       home:/* MultiProvider(
         providers: [
@@ -31,6 +36,6 @@ class _MyViewState extends State<MyView> {
         create: (context) => CounterBloc(),
         child: const HomeScreen(),
       ),
-    );
+    );*/
   }
 }
