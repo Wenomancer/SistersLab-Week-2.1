@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sisterslabsecond/presentation/bloc/counter_bloc.dart';
+import 'package:sisterslabsecond/presentation/home_screen.dart';
 
 void main() {
   runApp(MyView());
@@ -18,34 +21,15 @@ class _MyViewState extends State<MyView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: [
-            Text("Hello World!"),
-            Text("ilayda burdaydı"),
-            Container(
-              height: 200,
-              color: Colors.red,
-              child: Center(
-                child: Text('Container 1'),
-              ),
-            ),
-            Container(
-              height: 200,
-              color: Colors.green,
-              child: Center(
-                child: Text('Container 2'),
-              ),
-            ),
-            Container(
-              height: 200,
-              color: Colors.blue,
-              child: Center(
-                child: Text('Container 3'),
-              ),
-            ),
-          ],
-        ),
+      home:/* MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => HomeController()),
+        ],
+        child: const HomeScreen(),
+      ),*/
+          BlocProvider(
+        create: (context) => CounterBloc(),
+        child: const HomeScreen(),
       ),
     );
   }
